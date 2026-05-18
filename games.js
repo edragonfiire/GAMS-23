@@ -1712,6 +1712,10 @@ const games = `
     <img loading="lazy" src="gameimages/midnightshift.png" alt="Midnight Shift">
     <div>Midnight Shift</div>
 </a>
+<a class="game-link" href="https://classicgamezone.com/games/mike-tysons-punch-out">
+    <img loading="lazy" src="favicon.jpeg" alt="Mike Tyson's Punch-Out!!">
+    <div>Mike Tyson's Punch-Out!!</div>
+</a>
 <a class="game-link" href="gamefiles/Milk Inside a Bag of Milk Inside a Bag of Milk.html">
     <img loading="lazy" src="gameimages/milkinsideabagofmilk.png" alt="Milk Inside a Bag of Milk Inside a Bag of Milk">
     <div>Milk Inside a Bag of Milk Inside a Bag of Milk</div>
