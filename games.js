@@ -852,6 +852,10 @@ const games = `
     <img loading="lazy" src="gameimages/digdeep.png" alt="Dig Deep">
     <div>Dig Deep</div>
 </a>
+<a class="game-link" href="https://www.fridaynightfunkin.net">
+    <img loading="lazy" src="gameimages/fridaynightfunkin.webp" alt="Friday Night Funkin Net">
+    <div>Friday Night Funkin Network</div>
+</a>
 <a class="game-link" href="gamefiles/Friday Night Funkin.html">
     <img loading="lazy" src="gameimages/fridaynightfunkin.webp" alt="Friday Night Funkin">
     <div>Friday Night Funkin</div>
@@ -1179,6 +1183,10 @@ const games = `
 <a class="game-link" href="gamefiles/Fortzone Battle Royale.html">
     <img loading="lazy" src="gameimages/fortzonebattleroyale.png" alt="Fortzone Battle Royale">
     <div>Fortzone Battle Royale</div>
+</a>
+<a class="game-link" href="https://www.fridaynightfunkin.net">
+    <img loading="lazy" src="gameimages/fridaynightfunkin.webp" alt="Friday Night Funkin Net">
+    <div>Friday Night Funkin Network</div>
 </a>
 <a class="game-link" href="gamefiles/Friday Night Funkin Vs. Hatsune Miku.html">
     <img loading="lazy" src="gameimages/fnfvshatsunemiku.png" alt="Friday Night Funkin Vs. Hatsune Miku">
@@ -1711,10 +1719,6 @@ const games = `
 <a class="game-link" href="gamefiles/Midnight Shift.html">
     <img loading="lazy" src="gameimages/midnightshift.png" alt="Midnight Shift">
     <div>Midnight Shift</div>
-</a>
-<a class="game-link" href="https://classicgamezone.com/games/mike-tysons-punch-out">
-    <img loading="lazy" src="favicon.jpeg" alt="Mike Tyson's Punch-Out!!">
-    <div>Mike Tyson's Punch-Out!!</div>
 </a>
 <a class="game-link" href="gamefiles/Milk Inside a Bag of Milk Inside a Bag of Milk.html">
     <img loading="lazy" src="gameimages/milkinsideabagofmilk.png" alt="Milk Inside a Bag of Milk Inside a Bag of Milk">
