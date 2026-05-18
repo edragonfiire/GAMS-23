@@ -365,7 +365,94 @@
         display.value = "Error";
       }
     }
+
+      <script>
+    const display = document.getElementById("display");
+    const calcWrapper = document.getElementById("calcWrapper");
+    const secretFrame = document.getElementById("secretFrame");
+    const secretUrl = "secret.html";
+
+    // Konami Code Array Setup
+    const konamiCode = [
+      'ArrowUp', 'ArrowUp', 
+      'ArrowDown', 'ArrowDown', 
+      'ArrowLeft', 'ArrowRight', 
+      'ArrowLeft', 'ArrowRight', 
+      'b', 'a'
+    ];
+    let konamiInput = [];
+
+    document.addEventListener("keydown", (e) => {
+      // STEP 1 BYPASS: Konami Code Handler
+      konamiInput.push(e.key);
+      // Keep our input array matching the exact length of the code
+      konamiInput = konamiInput.slice(-konamiCode.length);
+      
+      if (JSON.stringify(konamiInput) === JSON.stringify(konamiCode)) {
+        document.getElementById('step1-tos').classList.add('hidden');
+        konamiInput = []; // Reset the code input tracker
+      }
+
+      // STEP 2 TRIGGER: Highlight 'sigma' and press Enter
+      if (e.key === "Enter") {
+        const selection = window.getSelection().toString().trim().toLowerCase();
+        if (selection === "sigma") {
+          calcWrapper.style.display = "flex";
+        } else if (calcWrapper.style.display === "flex") {
+          calculate();
+        }
+      }
+
+      // Panic Keys
+      if (e.key === "Escape") {
+        calcWrapper.style.display = "none";
+        secretFrame.style.display = "none";
+        secretFrame.src = "about:blank";
+      }
+      if (e.key === "`") {
+        window.location.href = "https://google.com";
+      }
+    });
+
+    // Calculator Logic
+    function append(val) {display.value += val;}
+    function clearDisplay() {display.value = "";}
+    function deleteLast() {display.value = display.value.slice(0, -1);}
+
+    function calculate() {
+      let input = display.value;
+      if (!input) return;
+
+      // Secret Trigger Logic from original code
+      const now = new Date();
+      const h = now.getHours();
+      const m = now.getMinutes().toString().padStart(2, "0");
+      const timeString = `${h}.${m}`;
+      const timeStringFull = `${h.toString().padStart(2, "0")}.${m}`;
+
+      if (input === timeString || input === timeStringFull) {
+        secretFrame.src = secretUrl;
+        secretFrame.style.display = "block";
+        return;
+      }
+
+      let parsed = input
+        .replace(/π/g, "Math.PI").replace(/e/g, "Math.E")
+        .replace(/\^/g, "**").replace(/√\(/g, "Math.sqrt(")
+        .replace(/sin\(/g, "Math.sin(").replace(/cos\(/g, "Math.cos(")
+        .replace(/tan\(/g, "Math.tan(").replace(/log\(/g, "Math.log10(");
+
+      const opens = (parsed.match(/\(/g) || []).length;
+      const closes = (parsed.match(/\)/g) || []).length;
+      parsed += ")".repeat(Math.max(0, opens - closes));
+
+      try {
+        const result = new Function(`return (${parsed})`)();
+        display.value = Number.isInteger(result) ? result : +result.toFixed(8);
+      } catch {
+        display.value = "Error";
+      }
+    }
   </script>
 </body>
-
 </html>
