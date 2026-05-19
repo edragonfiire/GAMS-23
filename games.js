@@ -852,10 +852,6 @@ const games = `
     <img loading="lazy" src="gameimages/digdeep.png" alt="Dig Deep">
     <div>Dig Deep</div>
 </a>
-<a class="game-link" href="https://www.fridaynightfunkin.net">
-    <img loading="lazy" src="gameimages/fridaynightfunkin.webp" alt="Friday Night Funkin Net">
-    <div>Friday Night Funkin Network</div>
-</a>
 <a class="game-link" href="gamefiles/Friday Night Funkin.html">
     <img loading="lazy" src="gameimages/fridaynightfunkin.webp" alt="Friday Night Funkin">
     <div>Friday Night Funkin</div>
