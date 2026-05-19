@@ -3341,3 +3341,87 @@ const games = `
     <div>ZDoom</div>
 </a>
 `;
+
+
+/* ==========================================
+   GAMS 2.3 - PLUG-AND-PLAY FAVORITES ENGINE
+   ========================================== */
+function initGamsFavorites() {
+    const savedFavs = JSON.parse(localStorage.getItem('gams_favorites')) || [];
+    
+    // 1. Find the main game card container on your page
+    // (Checks common naming conventions automatically)
+    const grid = document.querySelector('.grid-container, .game-grid, #games-grid') || document.body;
+    const gameCards = Array.from(grid.getElementsByClassName('game-link'));
+    
+    if (gameCards.length === 0) return; // Exit if cards haven't loaded yet
+
+    const favElements = [];
+    const regularElements = [];
+
+    // 2. Loop through all 834 games and inject interactive star mechanics
+    gameCards.forEach(card => {
+        const gameUrl = card.getAttribute('href') || '';
+        
+        // Isolate a unique string identifier out of the link path
+        const gameId = gameUrl.split('/').pop().replace('.html', ''); 
+        card.setAttribute('data-game-id', gameId);
+
+        // Append a clickable visual star icon inside the game card link box
+        if (!card.querySelector('.star-toggle')) {
+            const star = document.createElement('span');
+            star.className = 'star-toggle';
+            star.innerHTML = savedFavs.includes(gameId) ? '★' : '☆';
+            if (savedFavs.includes(gameId)) star.classList.add('active');
+            
+            // Prevent clicking the star from instantly launching the game iframe link
+            star.onclick = function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleGamsFavorite(gameId, star);
+            };
+            card.appendChild(star);
+        }
+
+        // Sort items cleanly based on status values
+        if (savedFavs.includes(gameId)) {
+            card.classList.add('is-favorited');
+            favElements.push(card);
+        } else {
+            card.classList.remove('is-favorited');
+            regularElements.push(card);
+        }
+    });
+
+    // 3. Clear container grid display panel and redraw with starred items first
+    grid.innerHTML = '';
+    favElements.forEach(el => grid.appendChild(el));
+    regularElements.forEach(el => grid.appendChild(el));
+}
+
+// Handler logic to write/delete values from localStorage data
+function toggleGamsFavorite(id, starElement) {
+    let favorites = JSON.parse(localStorage.getItem('gams_favorites')) || [];
+    
+    if (favorites.includes(id)) {
+        favorites = favorites.filter(item => item !== id);
+        starElement.innerHTML = '☆';
+        starElement.classList.remove('active');
+    } else {
+        favorites.push(id);
+        starElement.innerHTML = '★';
+        starElement.classList.add('active');
+    }
+    
+    localStorage.setItem('gams_favorites', JSON.stringify(favorites));
+    
+    // Instantly refresh the main selection board interface layout
+    initGamsFavorites();
+}
+
+// Auto-run routine checks to wait until the DOM string rendering sequence completes
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(initGamsFavorites, 200));
+} else {
+    setTimeout(initGamsFavorites, 200);
+}
