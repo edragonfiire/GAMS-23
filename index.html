@@ -202,6 +202,52 @@
       display: none;
       background: white;
     }
+    .secret-frame {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      border: none;
+      z-index: 99999;
+      display: none;
+      background: white;
+    }
+
+    /* ==================================================== */
+    /* PASTE STEP 2 DIRECTLY HERE                           */
+    /* ==================================================== */
+    .game-link {
+        position: relative !important;
+    }
+
+    .star-toggle {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        font-size: 22px;
+        color: rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        z-index: 99;
+        transition: all 0.2s ease;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
+    }
+
+    .game-link:hover .star-toggle {
+        color: rgba(255, 255, 255, 0.9);
+        transform: scale(1.2);
+    }
+
+    .star-toggle.active {
+        color: #ffca28 !important;
+        text-shadow: 0 0 10px rgba(255, 202, 40, 0.6);
+    }
+
+    .game-link.is-favorited {
+        border: 1px solid rgba(255, 202, 40, 0.4) !important;
+        box-shadow: 0 4px 15px rgba(255, 202, 40, 0.12) !important;
+    }
+    /* ==================================================== */
   </style>
 </head>
 
