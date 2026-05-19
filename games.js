@@ -1182,7 +1182,7 @@ const games = `
 </a>
 <a class="game-link" href="https://www.fridaynightfunkin.net">
     <img loading="lazy" src="gameimages/fridaynightfunkin.webp" alt="Friday Night Funkin Net">
-    <div>Friday Night Funkin Network</div>
+    <div>Friday Night Funkin Mod Weeks</div>
 </a>
 <a class="game-link" href="gamefiles/Friday Night Funkin Vs. Hatsune Miku.html">
     <img loading="lazy" src="gameimages/fnfvshatsunemiku.png" alt="Friday Night Funkin Vs. Hatsune Miku">
