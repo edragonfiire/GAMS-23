@@ -6,9 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Pedagogical Crisis of Gamification: An In-Depth Analysis</title>
   <style>
-        /* ==================================================== */
-    /* STEP 1 & 2: TERMS OF SERVICE OVERLAY STYLING         */
-    /* ==================================================== */
+ 
     #step1-tos {
       position: fixed;
       top: 0;
@@ -217,9 +215,7 @@
 </head>
 
 <body>
-  <!-- ==================================================== -->
-  <!-- ADDED LAYER: BORING TERMS OF SERVICE COVER           -->
-  <!-- ==================================================== -->
+
   <div id="step1-tos">
     <div class="tos-container">
         <h2>Network Portal User Agreement</h2>
@@ -358,7 +354,7 @@
     const secretFrame = document.getElementById("secretFrame");
     const secretUrl = "secret.html";
 
-    // Konami Code Array Setup
+
     const konamiCode = [
       'ArrowUp', 'ArrowUp', 
       'ArrowDown', 'ArrowDown', 
@@ -369,16 +365,16 @@
     let konamiInput = [];
 
     document.addEventListener("keydown", (e) => {
-      // STEP 1 BYPASS: Konami Code Handler
+     
       konamiInput.push(e.key);
-      konamiInput = konamiInput.slice(-konamiCode.length); // Keep exact length
+      konamiInput = konamiInput.slice(-konamiCode.length); 
       
       if (JSON.stringify(konamiInput) === JSON.stringify(konamiCode)) {
         document.getElementById('step1-tos').classList.add('hidden');
-        konamiInput = []; // Reset tracker
+        konamiInput = []; 
       }
 
-      // STEP 2 TRIGGER: Highlight 'sigma' and press Enter
+   
       if (e.key === "Enter") {
         const selection = window.getSelection().toString().trim().toLowerCase();
         if (selection === "sigma") {
@@ -388,7 +384,7 @@
         }
       }
 
-      // Panic Keys
+   
       if (e.key === "Escape") {
         calcWrapper.style.display = "none";
         secretFrame.style.display = "none";
@@ -399,7 +395,7 @@
       }
     });
 
-    // Calculator Logic
+ 
     function append(val) {display.value += val;}
     function clearDisplay() {display.value = "";}
     function deleteLast() {display.value = display.value.slice(0, -1);}
@@ -408,7 +404,7 @@
       let input = display.value;
       if (!input) return;
 
-      // Secret Trigger Logic from original code
+    
       const now = new Date();
       const h = now.getHours();
       const m = now.getMinutes().toString().padStart(2, "0");
@@ -439,17 +435,17 @@
       }
     }
   </script>
-    <!-- GAMS PERSISTENT BOOKMARK ENGINE (ATTACHED TO SYSTEM LOAD STATES) -->
+  
   <script>
     document.getElementById("secretFrame").addEventListener("load", function() {
       try {
         const frameWindow = this.contentWindow;
         const frameDoc = this.contentDocument || frameWindow.document;
 
-        // Configuration variable targeting your grid elements
+  
         const TARGET_CARD = ".game-card, .box, [class*='game']";
 
-        // Inject standalone styling sheets inside the isolated iframe session environment
+       
         const style = frameDoc.createElement('style');
         style.innerHTML = `
           ${TARGET_CARD} { position: relative !important; }
@@ -479,13 +475,13 @@
         `;
         frameDoc.head.appendChild(style);
 
-        // Continuous runtime monitor loop to detect dynamically mounted game blocks
+    
         const processDashboardItems = () => {
           const gameCards = frameDoc.querySelectorAll(TARGET_CARD);
           let savedBookmarks = JSON.parse(localStorage.getItem("gams_v2_bookmarks")) || [];
 
           gameCards.forEach((card, idx) => {
-              if (card.querySelector('.gams-star-btn')) return; // Exit if already mounted
+              if (card.querySelector('.gams-star-btn')) return; 
 
               const textLabel = card.querySelector('p') || card.querySelector('span');
               const uniqueGameId = card.getAttribute("data-id") || (textLabel ? textLabel.innerText.trim().replace(/\s+/g, '-').toLowerCase() : `game-${idx}`);
@@ -502,7 +498,7 @@
 
               btn.addEventListener("click", (event) => {
                   event.preventDefault();
-                  event.stopPropagation(); // Block canvas frame navigation loops from firing
+                  event.stopPropagation();
 
                   if (savedBookmarks.includes(uniqueGameId)) {
                       savedBookmarks = savedBookmarks.filter(id => id !== uniqueGameId);
@@ -524,14 +520,14 @@
             cards.forEach(card => {
                 const id = card.getAttribute("data-id");
                 if (bookmarks.includes(id)) {
-                    card.style.order = "-1"; // Recalculate sorting layer natively without modifying design assets
+                    card.style.order = "-1";
                 } else {
                     card.style.order = "0";
                 }
             });
         }
 
-        // Active scheduling triggers
+      
         processDashboardItems();
         frameWindow.setInterval(processDashboardItems, 1000);
 
