@@ -91,7 +91,6 @@ const games = `
     <img loading="lazy" src="gameimages/adanceoffireandice.png" alt="A Dance of Fire and Ice">
     <div>A Dance of Fire and Ice</div>
 </a>
-</a>
 <a class="game-link" href="gamefiles/Adventure Capitalist.html">
     <img loading="lazy" src="gameimages/adventurecapitalist.png" alt="Adventure Capitalist">
     <div>Adventure Capitalist</div>
