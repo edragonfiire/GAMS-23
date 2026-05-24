@@ -123,6 +123,10 @@ const games = `
     <img loading="lazy" src="gameimages/alienhominid.png" alt="Alien Hominid">
     <div>Alien Hominid</div>
 </a>
+<a class="game-link" href="https://allmanga.to">
+    <img loading="lazy" src="gameimages/zdoom.png" alt="All Manga">
+    <div>All Manga</div>
+</a>
 <a class="game-link" href="gamefiles/Amanda the Adventurer.html">
     <img loading="lazy" src="gameimages/amandatheadventurer.png" alt="Amanda the Adventurer">
     <div>Amanda the Adventurer</div>
